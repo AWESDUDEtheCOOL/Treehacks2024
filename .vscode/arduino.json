@@ -1,5 +1,5 @@
 {
-    "port": "COM11",
+    "port": "COM10",
     "configuration": "role=master,cache=on,speed=120,opt=small,maxqspi=50,usbstack=arduino,debug=off,txrxled=on",
     "board": "Seeeduino:samd:seeed_wio_terminal",
     "sketch": "LORA_rx_test\\LORA_rx_test.ino"
