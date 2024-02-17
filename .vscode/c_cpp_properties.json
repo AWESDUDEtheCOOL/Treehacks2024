@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Arduino",
-            "compilerPath": "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\bin\\arm-none-eabi-g++",
+            "compilerPath": "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\bin\\arm-none-eabi-g++",
             "compilerArgs": [
                 "-mcpu=cortex-m4",
                 "-mthumb",
@@ -19,28 +19,28 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\libraries\\Adafruit_TinyUSB_Arduino\\src\\arduino",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\libraries\\Adafruit_TinyUSB_Arduino\\src\\arduino",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS\\5.7.0\\CMSIS\\Core\\Include\\",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS\\5.7.0\\CMSIS\\DSP\\Include\\",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS-Atmel\\1.2.1\\CMSIS-Atmel\\CMSIS\\Device\\ATMEL\\",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\cores\\arduino",
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\variants\\wio_terminal",
-                "C:\\Users\\codin\\OneDrive\\Documents\\Arduino\\libraries\\LoRaE5-main",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1\\arm-none-eabi",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1\\backward",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\lib\\gcc\\arm-none-eabi\\7.2.1\\include",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\lib\\gcc\\arm-none-eabi\\7.2.1\\include-fixed",
-                "c:\\users\\codin\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include"
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\libraries\\Adafruit_TinyUSB_Arduino\\src\\arduino",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\libraries\\Adafruit_TinyUSB_Arduino\\src\\arduino",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS\\5.7.0\\CMSIS\\Core\\Include\\",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS\\5.7.0\\CMSIS\\DSP\\Include\\",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\tools\\CMSIS-Atmel\\1.2.1\\CMSIS-Atmel\\CMSIS\\Device\\ATMEL\\",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\cores\\arduino",
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\variants\\wio_terminal",
+                "C:\\Users\\AWESD\\OneDrive\\Documents\\Arduino\\libraries\\LoRaE5-main",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1\\arm-none-eabi",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include\\c++\\7.2.1\\backward",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\lib\\gcc\\arm-none-eabi\\7.2.1\\include",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\lib\\gcc\\arm-none-eabi\\7.2.1\\include-fixed",
+                "c:\\users\\awesd\\appdata\\local\\arduino15\\packages\\seeeduino\\tools\\arm-none-eabi-gcc\\7-2017q4\\arm-none-eabi\\include"
             ],
             "forcedInclude": [
-                "C:\\Users\\codin\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\cores\\arduino\\Arduino.h"
+                "C:\\Users\\AWESD\\AppData\\Local\\Arduino15\\packages\\Seeeduino\\hardware\\samd\\1.8.5\\cores\\arduino\\Arduino.h"
             ],
             "cStandard": "c11",
             "cppStandard": "c++14",
             "defines": [
-                "__SKETCH_NAME__=\"\"\"LORA_rx_test.ino\"\"\"",
+                "__SKETCH_NAME__=\"\"\"LORA_tx_test.ino\"\"\"",
                 "F_CPU=120000000L",
                 "ARDUINO=10607",
                 "ARDUINO_WIO_TERMINAL",
