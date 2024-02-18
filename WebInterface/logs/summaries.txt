@@ -1,0 +1,9 @@
+1:44:11;ER2;Rescue Team 3 at site, assessing damage, SAR operations, and trapped people assistance required.
+1:46:10;ER3;            Seismology centers alerted amid potential aftershocks, prepare for precautions.
+1:46:28;ER1;            Unit 1 seeks aid for casualties, entrapments, and needs backup. Requesting more search, rescue, and medical help.
+1:51:58;ER1;            Unit 1 needs urgent help with casualties, entrapments, and requests backup.
+1:52:33;ER1;            Unit 1 seeking backup for casualties, entrapments, and medical assistance needed.
+2:09:34;ER2;            Rescue Team 3 reports significant building damages, search and rescue underway, and need for support.
+2:13:49;ER1;            Unit 1 seeking backup for casualties, entrapments, and requiring search, rescue, and medical help.
+2:15:45;ER2;            Rescue Team 3 reports significant damage and search efforts underway.
+2:16:46;ER3;            Aftershocks alert, seismology centers advised, personnel cautioned for potential dangers.

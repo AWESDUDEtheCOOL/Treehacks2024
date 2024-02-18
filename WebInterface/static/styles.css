@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Respond-IO */
+body {
+    background-color: #fff;
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+#nav-bar {
+    border-bottom: 1px solid #000;
+    padding: 20px;
+}
+
+#dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.col1 {
+    width: 75%;
+    height: 100%;
+}
+
+#map {
+    height: 700px;
+}
+
+.col2 {
+    height: 700px;
+    width: 25%;
+}
+
+.timeline-box {
+    position: relative;
+    height: 65%;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.request-box {
+    overflow: scroll;
+}
+
+#timeline-contents p, #requests-contents p {
+    margin: 5px 0;
+}
+
+.request-box {
+    height: 35%;
+    background-color: #eee;
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #000;
+}
+
+#audio-samples {
+    z-index: 10000;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+#audio-samples button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#gps-img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 300px;
+    z-index: 10000;
+    display: none;
+    border: 3px solid black;
+}
+
+#gps-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: black;
+    padding: 2px 5px;
+    display: none;
+}

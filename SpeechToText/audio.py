@@ -9,7 +9,6 @@ from threading import Thread
 import numpy as np
 import queue
 import os
-
 from transformers import pipeline
 
 transcriber = pipeline(model="openai/whisper-base")

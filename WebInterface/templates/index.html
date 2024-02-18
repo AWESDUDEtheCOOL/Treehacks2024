@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Respond.io</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <header id="nav-bar">
+        <p><b>Respond.io:</b> <span id="timestamp"></span></p>
+        <audio hidden id="ER1-audio" controls src="{{ url_for('static', filename='ER1.m4a') }}"></audio>
+        <audio hidden id="ER2-audio" controls src="{{ url_for('static', filename='ER2.m4a') }}"></audio>
+        <audio hidden id="ER3-audio" controls src="{{ url_for('static', filename='ER3.m4a') }}"></audio>
+    </header>
+
+    <div id="dashboard">
+        <div class="col1">
+            <div id="map">
+                <div id="audio-samples">
+                    <button id="audio1">1</button>
+                    <button id="audio2">2</button>
+                    <button id="audio3">3</button>
+                    <button id="fire">🔥</button>
+                </div>
+
+                <img id="gps-img" src="{{ url_for('static', filename='gps2.jpg') }}" />
+                <p id="gps-text">54% damage</p>
+            </div>
+
+        </div>
+
+        <div class="col2">
+            <div class="timeline-box">
+                <p><b>Timeline</b></p>
+                <div id="timeline-contents">
+
+                </div>
+            </div>
+            <div class="request-box">
+                <p><b>Requests</b></p>
+                <div id="requests-contents">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="data-container"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scenario.js') }}"></script>
+</body>
+
+</html>

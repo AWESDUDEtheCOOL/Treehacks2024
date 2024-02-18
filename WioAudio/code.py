@@ -13,7 +13,6 @@ import audioio
 import array
 import math
 
-
 #### PIN SETUP
 MIC = AnalogIn(board.MIC)
 
@@ -28,6 +27,8 @@ BUTTON_MIDDLE.pull = Pull.UP
 BUTTON_RIGHT = DigitalInOut(board.BUTTON_1)
 BUTTON_RIGHT.direction = Direction.INPUT
 BUTTON_RIGHT.pull = Pull.UP
+
+SAMPLE_RATE = 440
 
 
 #### FUNCTIONS
@@ -63,6 +64,9 @@ while True:
     if is_pressed(BUTTON_MIDDLE):
         print("[*] Sending audio data over LoRA...")
         print(audio_array)
+
+        # with open("log.txt", "w") as fp:
+        #     fp.write(",".join(audio_array))
 
     # SAVE AUDIO TO ARRAY
     if is_recording:
