@@ -12,6 +12,11 @@ body {
     width: 100vw;
 }
 
+#tagline {
+    font-weight: 200;
+    margin-right: 10px;
+}
+
 #nav-bar {
     border-bottom: 1px solid #000;
     padding: 20px;

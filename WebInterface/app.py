@@ -67,6 +67,21 @@ def get_msg():
 def trigger_ER1():
     print("Setting ER1...")
     ER_AUDIO_LIST[0] = True
+    return "true"
+
+
+@app.route("/ER2", methods=["POST"])
+def trigger_ER2():
+    print("Setting ER2...")
+    ER_AUDIO_LIST[1] = True
+    return "true"
+
+
+@app.route("/ER2")
+def get_ER2_status():
+    status = ER_AUDIO_LIST[1]
+    ER_AUDIO_LIST[1] = None
+    return {"status": status}
 
 
 @app.route("/ER1")

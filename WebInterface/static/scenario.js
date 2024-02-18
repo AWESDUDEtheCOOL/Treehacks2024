@@ -132,12 +132,16 @@ audio1btn.addEventListener("click", () => {
     audio_button_1();
 })
 
-audio2btn.addEventListener("click", () => {
+function audio_button_2() {
     audio2btn.style.backgroundColor = "green";
     var audio = document.getElementById("ER2-audio")
     audio.play();
 
     send_audio_message("ER2.wav", "ER2")
+}
+
+audio2btn.addEventListener("click", () => {
+    audio_button_2()
 })
 
 audio3btn.addEventListener("click", () => {

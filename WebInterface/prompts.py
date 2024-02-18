@@ -10,10 +10,10 @@ os.environ["PREDICTIONGUARD_TOKEN"] = p_token
 
 def SUMMARY_PROMPT(context):
     return f"""### Instruction:
-            Read the text transcription from one of our Emergency Responders below and summarize it into ten words or less.
+            Read the text transcription from one of our Emergency Responders below and summarize it into ONE SENTENCE.
 
             EXAMPLE: 
-            Summary: UNIT 7 REQUESTING FOOD AND WATER DUE TO PROPERTY DAMAGE
+            Summary: Unit 7 requesting food and water due to property damage.
 
             ### Input:
             Transcript: {context}
@@ -41,10 +41,10 @@ def KEYWORD_PROMPT(context):
             Read the text transcription from one of our Emergency Responders below and classify the message into one of three categories based on the content. The categories are PROPERTY_DAMAGE, HUMAN_INJURIES and SEISMOLOGY.
 
             EXAMPLE: 
-            Request: UNIT 7 FOOD AND WATER
+            Keyword: HUMAN_INJURIES
 
             ### Input:
             Transcript: {context}
 
             ### Output:
-            Request: """
+            Keyword: """

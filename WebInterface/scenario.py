@@ -77,8 +77,11 @@ while True:
     response = receive_data()
     if response:
         if "Device 1" in response and "Heading" in response:
-            print("Sending...")
+            print("Sending ER1...")
             requests.post("http://127.0.0.1:5000/ER1", data=response[19:])
+        if "Device 2" in response and "Heading" in response:
+            print("Sending ER2...")
+            requests.post("http://127.0.0.1:5000/ER2", data=response[19:])
 
     with open("static/networkalert.txt") as f:
         content = f.read()
