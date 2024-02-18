@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "disk91_LoRaE5.h"
 
-Disk91_LoRaE5 lorae5(false); // true, false whatever
+Disk91_LoRaE5 lorae5(false); // true or false whatever
 
 uint8_t deveui[] = { 0xDC, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xEE };
 uint8_t appeui[] = { 0xCD, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xAD };
@@ -17,6 +17,32 @@ void setup() {
   if ( ! lorae5.begin(DSKLORAE5_SEARCH_WIO) ) {
     Serial.println("LoRa E5 Init Failed");
     while(1); 
+  }
+  
+  //lorae5.clearStoredConfig();
+
+  // This is just an example, usually the setup is made in a specific part of the code, 
+  // like a serial console reading or a UI. then is is stored into the E5 memory
+  // that way the credential are not staticly defined as it is in this example.
+  //
+  // That way, the configuration will be backup and the WioTerminal can be upgraded w/o loosing the credentials
+  if ( !lorae5.haveStoredConfig() ) {
+
+    // By executing this, the credentials will be stored 
+    if ( ! lorae5.persistConfig(
+            DSKLORAE5_ZONE_EU868,
+            deveui,
+            appeui,
+            appkey
+         ) ) {
+          Serial.println("LoRa E5 Persist failed");
+          while(1);         
+    } else {
+      Serial.println("LoRaWan config saved in LoRa E5"); 
+    }
+    
+  } else {
+    Serial.println("LoRaWan configuration is stored in LoRa E5");
   }
 
   // Setup the LoRaWan Credentials
@@ -35,7 +61,6 @@ void setup() {
 void loop() {
   static uint8_t data[] = { 0x01, 0x02, 0x03, 0x04 }; 
 
-  // Send an uplink message. The Join is automatically performed
   if ( lorae5.send_sync(
         1,              // LoRaWan Port
         data,           // data array

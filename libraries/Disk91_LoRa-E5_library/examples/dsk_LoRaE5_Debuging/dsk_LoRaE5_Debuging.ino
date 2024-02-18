@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "disk91_LoRaE5.h"
 
-Disk91_LoRaE5 lorae5(false); // true, false whatever
+Disk91_LoRaE5 lorae5(&Serial); // Where the AT command and debut traces are printed
 
 uint8_t deveui[] = { 0xDC, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xEE };
 uint8_t appeui[] = { 0xCD, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xAD };
@@ -35,7 +35,6 @@ void setup() {
 void loop() {
   static uint8_t data[] = { 0x01, 0x02, 0x03, 0x04 }; 
 
-  // Send an uplink message. The Join is automatically performed
   if ( lorae5.send_sync(
         1,              // LoRaWan Port
         data,           // data array
