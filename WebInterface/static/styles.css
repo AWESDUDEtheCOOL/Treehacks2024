@@ -72,3 +72,27 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
+#gps-img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 300px;
+    z-index: 10000;
+    display: none;
+    border: 3px solid black;
+}
+
+#gps-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: black;
+    padding: 2px 5px;
+    display: none;
+}

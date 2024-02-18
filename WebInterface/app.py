@@ -4,6 +4,7 @@ import os
 import json
 from transcriber import *
 from prompts import *
+from sat import *
 
 app = Flask(__name__)
 
@@ -38,6 +39,15 @@ def get_data():
         ER_LIST[2] = line
 
     return "Data received successfully!"
+
+
+@app.route("/sat")
+def get_sat():
+    print("making inference...")
+    confidence = make_inference("static/gps2.jpg")
+    print(confidence)
+
+    return {"result": confidence}
 
 
 @app.route("/msg", methods=["POST"])

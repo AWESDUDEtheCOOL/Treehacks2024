@@ -1,9 +1,14 @@
 const audio1btn = document.getElementById("audio1");
 const audio2btn = document.getElementById("audio2");
 const audio3btn = document.getElementById("audio3");
+const firebtn = document.getElementById("fire")
 const timestamp = document.getElementById("timestamp");
+const gpsimg = document.getElementById("gps-img")
+const gpstext = document.getElementById("gps-text")
 const timelinecontents = document.getElementById("timeline-contents")
 const requestscontents = document.getElementById("requests-contents")
+
+var isShowingGPS = false;
 
 function incoming_message_toast() {
     const Toast = Swal.mixin({
@@ -68,6 +73,17 @@ marker2.addTo(map)
 var marker3 = new L.Marker([37.788459, -122.387994]);
 marker3.addTo(map)
 
+var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+var fireMarker = new L.Marker([37.757183, -122.455781], { icon: redIcon })
+
 eventSource.onmessage = function (event) {
     const newData = event.data;
     const result = newData.split(",")
@@ -126,6 +142,39 @@ audio3btn.addEventListener("click", () => {
     audio.play();
 
     send_audio_message("ER3.wav", "ER3")
+})
+
+firebtn.addEventListener("click", () => {
+
+    if (!isShowingGPS) {
+        isShowingGPS = true;
+        gpsimg.style.display = "block"
+        fireMarker.addTo(map)
+
+        // make inference
+        fetch('http://127.0.0.1:5000/sat')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error upon request');
+                }
+                return response.text();
+            })
+            .then(data => {
+                result = JSON.parse(data)
+                gpstext.innerText = String(Math.round(result["result"])) + "% damage"
+                gpstext.style.display = "block"
+
+            })
+            .catch(error => console.error('Error:', error));
+
+        fireMarker.bindTooltip("[!] DISPATCH NEEDED", { permanent: true, offset: [0, 0] });
+        fireMarker.addTo(map);
+    } else {
+        isShowingGPS = false;
+        gpstext.style.display = "none"
+        gpsimg.style.display = "none"
+    }
+
 })
 
 async function update_timeline() {
