@@ -1,0 +1,5 @@
+7:01:01;ER1;Unit 1 needs backup for casualties, entrapments, and additional search and rescue teams. Medical help needed.             Text transcription: Request for support including medical aid, due to injuries and damaged property in emergency situation.
+7:01:16;ER1;Unit 1 seeks aid with casualties, entrapments, and needs urgent backup. Requests search, rescue, and medical teams.
+7:01:30;ER1;Unit 1 needs backup, casualties, entrapments, search and rescue, medical aid.             Summary: Multiple casualties, entrapments, search and rescue, medical teams requested.
+7:13:40;ER1;Unit 1 requests backup for casualties, entrapments, and need of rescue & medical teams.
+7:14:08;ER1;Unit 1 seeks backup for casualties, entrapments, needing SAR teams and medical aid.

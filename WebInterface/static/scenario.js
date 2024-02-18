@@ -64,7 +64,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiZmx1ZmZpZ3BvdGF0aXMiLCJhIjoiY2xzcjFyZWd6MTZ2ejJscDdrb3duZWJnbCJ9.43hF6_pTXT0XS18c7BnFPQ' // Replace this with your Mapbox access token
 }).addTo(map);
 
-var marker1 = new L.Marker([37.785367, -122.406943]);
+var marker1 = new L.Marker([37.785367, -122.406943])
 marker1.addTo(map)
 
 var marker2 = new L.Marker([37.790927, -122.477368]);
@@ -82,7 +82,7 @@ var redIcon = new L.Icon({
     shadowSize: [41, 41]
 });
 
-var fireMarker = new L.Marker([37.757183, -122.455781], { icon: redIcon })
+var fireMarker = new L.Marker([37.787694, -122.468952], { icon: redIcon })
 
 eventSource.onmessage = function (event) {
     const newData = event.data;
@@ -120,12 +120,16 @@ function send_audio_message(filename, ER) {
 }
 
 /* AUDIO BUTTONS */
-audio1btn.addEventListener("click", () => {
+function audio_button_1() {
     audio1btn.style.backgroundColor = "green";
     var audio = document.getElementById("ER1-audio")
     audio.play();
 
     send_audio_message("ER1.wav", "ER1")
+}
+
+audio1btn.addEventListener("click", () => {
+    audio_button_1();
 })
 
 audio2btn.addEventListener("click", () => {
@@ -247,3 +251,25 @@ var intervalId = window.setInterval(function () {
     update_requests();
     update_keywords();
 }, 2000);
+
+async function check_ER1() {
+    fetch('http://127.0.0.1:5000/ER1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error upon request');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var result = JSON.parse(data)["status"]
+            if (result) {
+                // trigger
+                audio_button_1();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+var erID = window.setInterval(function () {
+    check_ER1();
+}, 500);

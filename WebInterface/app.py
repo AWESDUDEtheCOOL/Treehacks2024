@@ -9,6 +9,7 @@ from sat import *
 app = Flask(__name__)
 
 ER_LIST = [None, None, None]
+ER_AUDIO_LIST = [None, None, None]
 
 
 def generate_data():
@@ -43,6 +44,10 @@ def get_data():
 
 @app.route("/sat")
 def get_sat():
+    # send dispatch message
+    with open("static/networkalert.txt", "w") as f:
+        f.write("TRUE")
+
     print("making inference...")
     confidence = make_inference("static/gps2.jpg")
     print(confidence)
@@ -56,6 +61,19 @@ def get_msg():
     print(f"[!!!] INCOMING MESSAGE: {line}")
 
     return "Got message"
+
+
+@app.route("/ER1", methods=["POST"])
+def trigger_ER1():
+    print("Setting ER1...")
+    ER_AUDIO_LIST[0] = True
+
+
+@app.route("/ER1")
+def get_ER1_status():
+    status = ER_AUDIO_LIST[0]
+    ER_AUDIO_LIST[0] = None
+    return {"status": status}
 
 
 @app.route("/audio", methods=["POST"])

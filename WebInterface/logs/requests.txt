@@ -1,0 +1,5 @@
+7:01:01;ER1;additional search and rescue teams, medical units, backup, immediate backup
+7:01:16;ER1;UNIT 1 NEEDS IMMEDIATE BACKUP, MORE SEARCH AND RESCUE TEAMS, AND MEDICAL UNITS            NONEissenschaftissenschaftissenschaftissenschaftissenschaftissenschaftissenschaft
+7:01:30;ER1;UNIT 1 NEEDS IMMEDIATE BACKUP, ADDITIONAL SEARCH AND RESCUE TEAMS, MEDICAL UNITS
+7:13:40;ER1;SEND ADDITIONAL SEARCH AND RESCUE TEAMS AND MEDICAL UNITS
+7:14:08;ER1;Additional search and rescue teams, medical units.
