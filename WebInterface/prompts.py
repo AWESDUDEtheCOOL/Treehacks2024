@@ -38,7 +38,7 @@ def REQUEST_PROMPT(context):
 
 def KEYWORD_PROMPT(context):
     return f"""### Instruction:
-            Read the text transcription from one of our Emergency Responders below and classify the message into one of three categories based on the content. The categories are PROPERTY_DAMAGE, HUMAN_INJURIES and SEISMOLOGY.
+            Read the text transcription from one of our Emergency Responders below and classify the message into one of three categories based on the content. The categories are FALLEN PROPERTY, HUMAN_INJURIES and SEISMOLOGY.
 
             EXAMPLE: 
             Keyword: HUMAN_INJURIES

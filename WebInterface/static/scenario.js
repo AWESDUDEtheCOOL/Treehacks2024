@@ -274,6 +274,25 @@ async function check_ER1() {
         .catch(error => console.error('Error:', error));
 }
 
+async function check_ER2() {
+    fetch('http://127.0.0.1:5000/ER2')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error upon request');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var result = JSON.parse(data)["status"]
+            if (result) {
+                // trigger
+                audio_button_2();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
+
 var erID = window.setInterval(function () {
     check_ER1();
+    check_ER2();
 }, 500);
