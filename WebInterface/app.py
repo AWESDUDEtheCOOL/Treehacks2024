@@ -61,17 +61,35 @@ def get_audio():
     transcription = transcribe("static/" + filename, "logs/demo.txt")
 
     print("Getting summary...")
-    prompt = SUMMARY_PROMPT + transcription + "\n\n" + "### In summary: "
-    result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
 
+    prompt = SUMMARY_PROMPT(transcription)
+    result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
     summary = result["choices"][0]["text"]
     summary = summary.replace("\n", "")
-    print(summary)
 
     with open("logs/summaries.txt", "a") as f:
         f.write(f"{timestamp};{responder};{summary}\n")
-
     print("Saved summary to logs.")
+
+    prompt = REQUEST_PROMPT(transcription)
+    result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
+    needs = result["choices"][0]["text"]
+    needs = needs.replace("\n", "")
+    print(f"Request: {needs}")
+
+    if needs != "NONE":
+        with open("logs/requests.txt", "a") as f:
+            f.write(f"{timestamp};{responder};{needs}\n")
+
+    prompt = KEYWORD_PROMPT(transcription)
+    result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
+    keyword = result["choices"][0]["text"]
+    keyword = keyword.replace("\n", "")
+    keyword = keyword.strip()
+    print(f"Keyword: {keyword}")
+
+    with open("logs/keywords.txt", "a") as f:
+        f.write(f"{timestamp};{responder};{keyword}\n")
 
     return "Got message"
 
@@ -85,6 +103,16 @@ def stream():
 @app.route("/timeline")
 def get_timeline():
     return send_file("logs/summaries.txt")
+
+
+@app.route("/keywords")
+def get_keywords():
+    return send_file("logs/keywords.txt")
+
+
+@app.route("/requests")
+def get_requests():
+    return send_file("logs/requests.txt")
 
 
 if __name__ == "__main__":

@@ -43,7 +43,11 @@ body {
     overflow: scroll;
 }
 
-#timeline-contents p {
+.request-box {
+    overflow: scroll;
+}
+
+#timeline-contents p, #requests-contents p {
     margin: 5px 0;
 }
 

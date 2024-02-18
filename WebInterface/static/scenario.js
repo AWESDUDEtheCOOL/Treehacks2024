@@ -3,6 +3,7 @@ const audio2btn = document.getElementById("audio2");
 const audio3btn = document.getElementById("audio3");
 const timestamp = document.getElementById("timestamp");
 const timelinecontents = document.getElementById("timeline-contents")
+const requestscontents = document.getElementById("requests-contents")
 
 function incoming_message_toast() {
     const Toast = Swal.mixin({
@@ -21,7 +22,6 @@ function incoming_message_toast() {
         title: "[!] Incoming Message"
     });
 }
-
 
 /* Code from: https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock */
 function startTime() {
@@ -87,6 +87,21 @@ eventSource.onmessage = function (event) {
 
 };
 
+function send_audio_message(filename, ER) {
+    incoming_message_toast()
+
+    fetch("http://127.0.0.1:5000/audio", {
+        method: "POST",
+        body: JSON.stringify({
+            audioclip: filename,
+            timestamp: timestamp.innerText,
+            responder: ER
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    });
+}
 
 /* AUDIO BUTTONS */
 audio1btn.addEventListener("click", () => {
@@ -94,31 +109,23 @@ audio1btn.addEventListener("click", () => {
     var audio = document.getElementById("ER1-audio")
     audio.play();
 
-    incoming_message_toast()
-
-    fetch("http://127.0.0.1:5000/audio", {
-        method: "POST",
-        body: JSON.stringify({
-            audioclip: "ER1.wav",
-            timestamp: timestamp.innerText,
-            responder: "ER1"
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    });
+    send_audio_message("ER1.wav", "ER1")
 })
 
 audio2btn.addEventListener("click", () => {
     audio2btn.style.backgroundColor = "green";
     var audio = document.getElementById("ER2-audio")
     audio.play();
+
+    send_audio_message("ER2.wav", "ER2")
 })
 
 audio3btn.addEventListener("click", () => {
     audio3btn.style.backgroundColor = "green";
     var audio = document.getElementById("ER3-audio")
     audio.play();
+
+    send_audio_message("ER3.wav", "ER3")
 })
 
 async function update_timeline() {
@@ -139,9 +146,55 @@ async function update_timeline() {
         .catch(error => console.error('Error:', error));
 }
 
+async function update_requests() {
+    fetch('http://127.0.0.1:5000/requests')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error upon request');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var content = ""
+            for (const report of data.split("\n")) {
+                content += ("<p>" + report + "</p>")
+            }
+            requestscontents.innerHTML = content
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+async function update_keywords() {
+    fetch('http://127.0.0.1:5000/keywords')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error upon request');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var content = ""
+            for (const keyword of data.split("\n")) {
+                dataRow = keyword.split(";")
+                if (dataRow[1] == "ER1") {
+                    marker1.bindTooltip(dataRow[2], { permanent: true, offset: [0, 0] });
+                    marker1.addTo(map);
+                }
+                if (dataRow[1] == "ER2") {
+                    marker2.bindTooltip(dataRow[2], { permanent: true, offset: [0, 0] });
+                    marker2.addTo(map);
+                }
+                if (dataRow[1] == "ER3") {
+                    marker3.bindTooltip(dataRow[2], { permanent: true, offset: [0, 0] });
+                    marker3.addTo(map);
+                }
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 var intervalId = window.setInterval(function () {
     update_timeline();
+    update_requests();
+    update_keywords();
 }, 2000);
-
-

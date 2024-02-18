@@ -7,20 +7,44 @@ with open("predictiontoken.txt") as f:
 # Set your Prediction Guard token as an environmental variable.
 os.environ["PREDICTIONGUARD_TOKEN"] = p_token
 
-KEYWORD_PROMPT = """### Instruction:
-Read the text transcription from one of our Emergency Responders below and classify the message into one of three categories based on the content. The categories are PROPERTY_DAMAGE, HUMAN_INJURIES and SEISMOLOGY.
 
-### Input:
-Context: This is unit 1 requesting immediate backup at my location. We have multiple casualities and potential entrapments.
+def SUMMARY_PROMPT(context):
+    return f"""### Instruction:
+            Read the text transcription from one of our Emergency Responders below and summarize it into ten words or less.
 
-### Response:
-"""
+            EXAMPLE: 
+            Summary: UNIT 7 REQUESTING FOOD AND WATER DUE TO PROPERTY DAMAGE
 
-SUMMARY_PROMPT = """### Instruction:
-Read the text transcription from one of our Emergency Responders below and summarize it into ten words or less.
+            ### Input:
+            Transcript: {context}
 
-EXAMPLE: 
-In summary: UNIT 7 REQUESTING FOOD AND WATER DUE TO PROPERTY DAMAGE
+            ### Output:
+            Summary: """
 
-### Input:
-Transcript: """
+
+def REQUEST_PROMPT(context):
+    return f"""### Instruction:
+            Read the text transcription from one of our Emergency Responders below and pick out REQUESTS that the emergency responders need help with or NONE if no request is made.
+
+            EXAMPLE: 
+            Request: UNIT 7 FOOD AND WATER
+
+            ### Input:
+            Transcript: {context}
+
+            ### Output:
+            Request: """
+
+
+def KEYWORD_PROMPT(context):
+    return f"""### Instruction:
+            Read the text transcription from one of our Emergency Responders below and classify the message into one of three categories based on the content. The categories are PROPERTY_DAMAGE, HUMAN_INJURIES and SEISMOLOGY.
+
+            EXAMPLE: 
+            Request: UNIT 7 FOOD AND WATER
+
+            ### Input:
+            Transcript: {context}
+
+            ### Output:
+            Request: """
