@@ -1,4 +1,27 @@
+const audio1btn = document.getElementById("audio1");
+const audio2btn = document.getElementById("audio2");
+const audio3btn = document.getElementById("audio3");
 const timestamp = document.getElementById("timestamp");
+const timelinecontents = document.getElementById("timeline-contents")
+
+function incoming_message_toast() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "error",
+        title: "[!] Incoming Message"
+    });
+}
+
 
 /* Code from: https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock */
 function startTime() {
@@ -18,6 +41,7 @@ function checkTime(i) {
 }
 
 startTime();
+
 
 const eventSource = new EventSource('/stream');
 const dataContainer = document.getElementById('data-container');
@@ -62,3 +86,62 @@ eventSource.onmessage = function (event) {
     }
 
 };
+
+
+/* AUDIO BUTTONS */
+audio1btn.addEventListener("click", () => {
+    audio1btn.style.backgroundColor = "green";
+    var audio = document.getElementById("ER1-audio")
+    audio.play();
+
+    incoming_message_toast()
+
+    fetch("http://127.0.0.1:5000/audio", {
+        method: "POST",
+        body: JSON.stringify({
+            audioclip: "ER1.wav",
+            timestamp: timestamp.innerText,
+            responder: "ER1"
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    });
+})
+
+audio2btn.addEventListener("click", () => {
+    audio2btn.style.backgroundColor = "green";
+    var audio = document.getElementById("ER2-audio")
+    audio.play();
+})
+
+audio3btn.addEventListener("click", () => {
+    audio3btn.style.backgroundColor = "green";
+    var audio = document.getElementById("ER3-audio")
+    audio.play();
+})
+
+async function update_timeline() {
+    fetch('http://127.0.0.1:5000/timeline')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error upon request');
+            }
+            return response.text();
+        })
+        .then(data => {
+            var content = ""
+            for (const report of data.split("\n")) {
+                content += ("<p>" + report + "</p>")
+            }
+            timelinecontents.innerHTML = content
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+var intervalId = window.setInterval(function () {
+    update_timeline();
+}, 2000);
+
+

@@ -1,6 +1,11 @@
 import json
 import time
 import requests
+import datetime
+
+
+def now():
+    return datetime.datetime.now().strftime("%Y-%m-%d %H:%m:%S")
 
 
 def load_gps(filename):
@@ -26,6 +31,9 @@ status = {
 }
 
 frame = 0
+
+sent_msg1 = False
+
 while True:
 
     print(f"ER1 at location {status['ER1']['GPS']}")
@@ -39,16 +47,16 @@ while True:
     status["ER3"]["GPS"] = ER3[frame % len(ER3)]
 
     requests.post(
-        "http://127.0.0.1:5000",
-        data=f"ER1,{status['ER1']['GPS'][0]},{status['ER1']['GPS'][1]}",
+        "http://127.0.0.1:5000/gps",
+        data=f"ER1,{status['ER1']['GPS'][0]},{status['ER1']['GPS'][1]},{now()}",
     )
     requests.post(
-        "http://127.0.0.1:5000",
-        data=f"ER2,{status['ER2']['GPS'][0]},{status['ER2']['GPS'][1]}",
+        "http://127.0.0.1:5000/gps",
+        data=f"ER2,{status['ER2']['GPS'][0]},{status['ER2']['GPS'][1]},{now()}",
     )
     requests.post(
-        "http://127.0.0.1:5000",
-        data=f"ER3,{status['ER3']['GPS'][0]},{status['ER3']['GPS'][1]}",
+        "http://127.0.0.1:5000/gps",
+        data=f"ER3,{status['ER3']['GPS'][0]},{status['ER3']['GPS'][1]},{now()}",
     )
 
     time.sleep(1)

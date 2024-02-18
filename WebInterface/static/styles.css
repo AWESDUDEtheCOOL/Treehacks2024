@@ -32,6 +32,39 @@ body {
 }
 
 .col2 {
-    padding: 20px 10px;
+    height: 700px;
+    width: 25%;
 }
 
+.timeline-box {
+    position: relative;
+    height: 65%;
+    padding: 10px;
+    overflow: scroll;
+}
+
+#timeline-contents p {
+    margin: 5px 0;
+}
+
+.request-box {
+    height: 35%;
+    background-color: #eee;
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #000;
+}
+
+#audio-samples {
+    z-index: 10000;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+#audio-samples button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
