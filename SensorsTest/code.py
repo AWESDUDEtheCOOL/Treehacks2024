@@ -18,12 +18,6 @@ led.direction = digitalio.Direction.OUTPUT
 
 print("== RUNNING RESPONSIO ==")
 
-# Sine wave
-length = 8000 // 440
-sine_wave = array.array("h", [0] * length)
-for i in range(length):
-    sine_wave[i] = int(math.sin(math.pi * 2 * i / length) * (2**15))
-
 speaking = False
 speaker_count = 2
 
