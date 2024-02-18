@@ -76,6 +76,7 @@ def get_audio():
     result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
     summary = result["choices"][0]["text"]
     summary = summary.replace("\n", "")
+    summary = summary.strip()
 
     with open("logs/summaries.txt", "a") as f:
         f.write(f"{timestamp};{responder};{summary}\n")
@@ -85,6 +86,7 @@ def get_audio():
     result = pg.Completion.create(model="Neural-Chat-7B", prompt=prompt)
     needs = result["choices"][0]["text"]
     needs = needs.replace("\n", "")
+    needs = needs.strip()
     print(f"Request: {needs}")
 
     if needs != "NONE":
@@ -96,6 +98,7 @@ def get_audio():
     keyword = result["choices"][0]["text"]
     keyword = keyword.replace("\n", "")
     keyword = keyword.strip()
+    keyword = keyword[:18]
     print(f"Keyword: {keyword}")
 
     with open("logs/keywords.txt", "a") as f:

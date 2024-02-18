@@ -1,5 +1,0 @@
-1:52:33;ER1;additional search and rescue teams, medical units, backup, help with casualties, help with potential entrapments
-2:09:34;ER2;            NONE
-2:13:49;ER1;            Immediate backup, additional search and rescue teams, medical units
-2:15:45;ER2;            NONE
-2:16:46;ER3;            NONE
